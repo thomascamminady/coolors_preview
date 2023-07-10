@@ -1,6 +1,6 @@
 import streamlit as st
 
-from coolors_preview.preview import create_preview
+from coolors_preview.preview import create_preview, create_palette
 from coolors_preview.url2palette import url2palette
 
 
@@ -16,7 +16,10 @@ def app():
     )
     if coolors_url:
         palette = url2palette(coolors_url)
+
         st.code(palette.get_hex)
+        palette_chart = create_palette(palette)
+        st.altair_chart(palette_chart)
         # st.markdown(f"""[{coolors_url}]({coolors_url})""")
         altair_chart = create_preview(palette)
         st.altair_chart(altair_chart)

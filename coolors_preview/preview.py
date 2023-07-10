@@ -18,6 +18,24 @@ def create_data(hex: list[str]) -> pl.DataFrame:
     return pl.DataFrame({"x": x, "y": y, "c": c, "t": t})
 
 
+def create_palette(palette: Palette) -> alt.Chart:
+    altair_theme()
+    df = pl.DataFrame(
+        [{"i": i, "color": color} for i, color in enumerate(palette.get_hex)]
+    )
+    return (
+        alt.Chart(df)
+        .mark_rect()
+        .encode(
+            x=alt.X("i:N").axis(None),
+            y=alt.value(1.0),
+            color=alt.Color("color:N", sort=None)
+            .scale(range=palette.get_hex)
+            .legend(None),
+        )
+    ).properties(height=200, width=1250)
+
+
 def create_preview(palette: Palette) -> alt.HConcatChart:
     altair_theme()
     hex = palette.get_hex
@@ -28,31 +46,22 @@ def create_preview(palette: Palette) -> alt.HConcatChart:
         .encode(
             color=alt.Color("c:N").scale(range=hex, domain=hex).legend(None),
         )
-        .properties(width=300, height=300)
+        .properties(width=400, height=300)
     )
 
     chart1 = base.mark_point(filled=True, size=200, opacity=1).encode(
-        x="x:Q",
-        y="y:Q",
+        x=alt.X("x:Q").axis(None),
+        y=alt.Y("y:Q").axis(None),
     )
     chart2 = base.mark_line(strokeWidth=3).encode(
-        x=alt.X("t:Q", sort=None),
-        y="y:Q",
+        x=alt.X("t:Q", sort=None).axis(None),
+        y=alt.Y("y:Q").axis(None),
     )
 
-    chart3 = base.mark_bar(strokeOpacity=1).encode(
-        x=alt.X("c:N"),
-        y="x:Q",
+    chart3 = base.mark_bar(strokeOpacity=1, strokeWidth=10).encode(
+        x=alt.X("x:N").bin().axis(None),
+        y=alt.Y("count():Q").axis(None),
     )
 
-    chart4 = base.mark_rect().encode(
-        x=alt.X("x:Q").bin(maxbins=5),
-        y=alt.Y("y:Q").bin(maxbins=5),
-        color=alt.Color("count():N").scale(range=hex).legend(None),
-    )
-
-    chart = alt.hconcat(
-        alt.hconcat(chart1, chart2),
-        alt.hconcat(chart3, chart4),
-    )
+    chart = alt.hconcat(chart1, chart2, chart3)
     return chart
