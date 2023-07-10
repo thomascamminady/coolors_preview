@@ -1,6 +1,6 @@
 import streamlit as st
 
-from coolors_preview.preview import create_preview, create_palette
+from coolors_preview.preview import create_palette, create_preview
 from coolors_preview.url2palette import url2palette
 
 

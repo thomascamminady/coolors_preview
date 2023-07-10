@@ -8,11 +8,6 @@ init:
 	git init
 	echo ".venv/" >> .gitignore
 	echo "logs/" >> .gitignore
-	git lfs install
-	git lfs track "*.fit"
-	git lfs track "*.hdf5"
-	git lfs track "*.html"
-	git lfs track "*.parquet"
 	poetry export -f requirements.txt --output requirements.txt
 	git add .
 	poetry run pre-commit run --all-files
