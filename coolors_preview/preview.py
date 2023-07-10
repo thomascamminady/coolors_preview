@@ -3,7 +3,7 @@ import numpy as np
 import polars as pl
 from camminapy.plot import altair_theme
 
-from coolor_preview.palette import Palette
+from coolors_preview.palette import Palette
 
 
 def create_data(hex: list[str]) -> pl.DataFrame:

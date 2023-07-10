@@ -1,7 +1,7 @@
 import re
 
-from coolor_preview.hexcolor import HexColor
-from coolor_preview.palette import Palette
+from coolors_preview.hexcolor import HexColor
+from coolors_preview.palette import Palette
 
 
 def is_valid_url(url):

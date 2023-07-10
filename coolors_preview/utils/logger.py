@@ -3,7 +3,7 @@ import os
 
 from rich.logging import RichHandler
 
-from coolor_preview import config
+from coolors_preview import config
 
 logger = logging.getLogger(__name__)
 

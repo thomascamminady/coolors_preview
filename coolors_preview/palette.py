@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from coolor_preview.hexcolor import HexColor
+from coolors_preview.hexcolor import HexColor
 
 
 @dataclass

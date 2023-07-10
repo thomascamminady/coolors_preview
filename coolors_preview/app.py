@@ -1,7 +1,7 @@
 import streamlit as st
 
-from coolor_preview.preview import create_preview
-from coolor_preview.url2palette import url2palette
+from coolors_preview.preview import create_preview
+from coolors_preview.url2palette import url2palette
 
 
 def app():
