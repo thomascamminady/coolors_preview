@@ -1,1 +1,1 @@
-"""Unit test package for coolor_preview."""
+"""Unit test package for coolors_preview."""

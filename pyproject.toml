@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "coolor_preview"
+name = "coolors_preview"
 version = "0.1.0"
 description = ""
 authors = ["Thomas Camminady <0milieux_member@icloud.com>"]

@@ -1,5 +1,5 @@
 ==============
-coolor_preview
+coolors_preview
 ==============
 
 

@@ -23,4 +23,4 @@ test:
 	pytest .
 
 coverage:
-	pytest --cov=coolor_preview tests/
+	pytest --cov=coolors_preview tests/
